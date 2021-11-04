@@ -1,0 +1,75 @@
+﻿@model medics.Models.appointment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>appointment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.appdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dept)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dept)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doctor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doctor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msg)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.appid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

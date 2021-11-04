@@ -1,0 +1,76 @@
+﻿@model IEnumerable<medics.Models.blog>
+@{
+    ViewBag.Title = "psychology";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!--Page Title-->
+<section class="page-title text-center" style="background-image:url(../images/background/3.jpg);">
+    <div class="container">
+        <div class="title-text">
+            <h1>Blog</h1>
+            <ul class="title-menu clearfix">
+                <li>
+                    <a href="index.html">home &nbsp;/</a>
+                </li>
+                <li>Blog</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+<!-- Contact Section -->
+
+<section class="blog-section style-four section">
+    <div class="container">
+        <h1><u>Know more about Psychology... </u></h1>
+        <br/>   <br/>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="left-side">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item-holder">
+                            <div class="image-box">
+                                <figure>
+                                    <a href="blog-details.html"><img loading="lazy" class="img-fluid" src="@Url.Content("~/images/"+item.blogimg)" alt=""></a>
+                                </figure>
+                            </div>
+                            <div class="content-text">
+                                <a href="blog-details.html">
+                                    <h4>@item.blogtitle</h4>
+                                </a>
+                                <span> @item.blogauthor / @item.blogdate</span>
+                                <p>
+                                    @item.blogdescription
+                                </p>
+                                <div class="link-btn">
+                                    <a href="@Url.Action("blogdetails","Main",new { id= item.blogid })" class="btn-style-one">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+
+                    @*<div class="styled-pagination">
+                        <ul>
+                            <li><a class="prev" href="blog.html"><span class="fas fa-angle-left" aria-hidden="true"></span></a></li>
+                            <li><a href="blog.html" class="active">1</a></li>
+                            <li><a href="blog.html">2</a></li>
+                            <li><a href="blog.html">3</a></li>
+                            <li><a class="next" href="blog.html"><span class="fas fa-angle-right" aria-hidden="true"></span></a></li>
+                        </ul>
+                    </div>*@
+                </div>
+            </div>
+
+            @Html.Partial("_sidebar")
+        </div>
+    </div>
+</section>
+<!-- End Contact Section -->

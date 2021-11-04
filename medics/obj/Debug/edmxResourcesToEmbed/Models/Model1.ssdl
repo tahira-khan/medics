@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="medicalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="appointment">
+    <Key>
+      <PropertyRef Name="appid" />
+    </Key>
+    <Property Name="appid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pname" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="220" />
+    <Property Name="contact" Type="bigint" />
+    <Property Name="appdate" Type="date" />
+    <Property Name="dept" Type="varchar" MaxLength="50" />
+    <Property Name="doctor" Type="varchar" MaxLength="60" />
+    <Property Name="msg" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="blog">
+    <Key>
+      <PropertyRef Name="blogid" />
+    </Key>
+    <Property Name="blogid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="blogtitle" Type="varchar(max)" />
+    <Property Name="blogdescription" Type="varchar(max)" />
+    <Property Name="blogdate" Type="date" />
+    <Property Name="blogauthor" Type="varchar" MaxLength="50" />
+    <Property Name="cat_id" Type="int" />
+    <Property Name="blogimg" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="comments">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="guestname" Type="varchar" MaxLength="500" />
+    <Property Name="email" Type="varchar" MaxLength="500" />
+    <Property Name="cdate" Type="date" />
+    <Property Name="comments" Type="varchar(max)" />
+    <Property Name="blogid" Type="int" />
+  </EntityType>
+  <EntityType Name="contactus">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="guestname" Type="varchar" MaxLength="500" />
+    <Property Name="email" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="bigint" />
+    <Property Name="msg" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fname" Type="varchar" MaxLength="50" />
+    <Property Name="lname" Type="varchar" MaxLength="50" />
+    <Property Name="contact" Type="bigint" />
+    <Property Name="dob" Type="date" />
+    <Property Name="email" Type="varchar" MaxLength="250" />
+    <Property Name="username" Type="varchar" MaxLength="100" />
+    <Property Name="pass" Type="varchar" MaxLength="100" />
+    <Property Name="user_img" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <Association Name="FK__blog__cat_id__276EDEB3">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="blog" Type="Self.blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="blog">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comments__blogid__3F466844">
+    <End Role="blog" Type="Self.blog" Multiplicity="0..1" />
+    <End Role="comments" Type="Self.comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="blog">
+        <PropertyRef Name="blogid" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="blogid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="medicalModelStoreContainer">
+    <EntitySet Name="appointment" EntityType="Self.appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="blog" EntityType="Self.blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="comments" EntityType="Self.comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contactus" EntityType="Self.contactus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__blog__cat_id__276EDEB3" Association="Self.FK__blog__cat_id__276EDEB3">
+      <End Role="category" EntitySet="category" />
+      <End Role="blog" EntitySet="blog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comments__blogid__3F466844" Association="Self.FK__comments__blogid__3F466844">
+      <End Role="blog" EntitySet="blog" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

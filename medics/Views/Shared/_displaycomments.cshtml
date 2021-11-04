@@ -1,0 +1,31 @@
+﻿@model IEnumerable<medics.Models.comment>
+
+<div class="comments-area">
+    <div class="sec-title">
+        <h6>Comments </h6>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="comment">
+            <div class="image-holder">
+                <figure>
+                    <img loading="lazy" src="~/images/usercomment.png" alt="" width="60" height="50">
+                </figure>
+            </div>
+            <div class="image-text">
+                <h6>@item.guestname <span>@item.cdate </span></h6>
+                @*<h5>
+                    <a href="blog-details.html">
+                        <i class="fa fa-reply-all" aria-hidden="true"></i>Comment Back
+                    </a>
+                </h5>*@
+                <p>
+                @item.comments
+                </p>
+            </div>
+        </div>
+    }
+
+
+</div>

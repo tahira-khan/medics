@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="medicalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="appointment">
+          <Key>
+            <PropertyRef Name="appid" />
+          </Key>
+          <Property Name="appid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pname" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="220" />
+          <Property Name="contact" Type="bigint" />
+          <Property Name="appdate" Type="date" />
+          <Property Name="dept" Type="varchar" MaxLength="50" />
+          <Property Name="doctor" Type="varchar" MaxLength="60" />
+          <Property Name="msg" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="blog">
+          <Key>
+            <PropertyRef Name="blogid" />
+          </Key>
+          <Property Name="blogid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="blogtitle" Type="varchar(max)" />
+          <Property Name="blogdescription" Type="varchar(max)" />
+          <Property Name="blogdate" Type="date" />
+          <Property Name="blogauthor" Type="varchar" MaxLength="50" />
+          <Property Name="cat_id" Type="int" />
+          <Property Name="blogimg" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="comments">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="guestname" Type="varchar" MaxLength="500" />
+          <Property Name="email" Type="varchar" MaxLength="500" />
+          <Property Name="cdate" Type="date" />
+          <Property Name="comments" Type="varchar(max)" />
+          <Property Name="blogid" Type="int" />
+        </EntityType>
+        <EntityType Name="contactus">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="guestname" Type="varchar" MaxLength="500" />
+          <Property Name="email" Type="varchar" MaxLength="500" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="msg" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="lname" Type="varchar" MaxLength="50" />
+          <Property Name="contact" Type="bigint" />
+          <Property Name="dob" Type="date" />
+          <Property Name="email" Type="varchar" MaxLength="250" />
+          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Property Name="pass" Type="varchar" MaxLength="100" />
+          <Property Name="user_img" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK__blog__cat_id__276EDEB3">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="blog" Type="Self.blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="blog">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__comments__blogid__3F466844">
+          <End Role="blog" Type="Self.blog" Multiplicity="0..1" />
+          <End Role="comments" Type="Self.comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="blog">
+              <PropertyRef Name="blogid" />
+            </Principal>
+            <Dependent Role="comments">
+              <PropertyRef Name="blogid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="medicalModelStoreContainer">
+          <EntitySet Name="appointment" EntityType="Self.appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="blog" EntityType="Self.blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comments" EntityType="Self.comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contactus" EntityType="Self.contactus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__blog__cat_id__276EDEB3" Association="Self.FK__blog__cat_id__276EDEB3">
+            <End Role="category" EntitySet="category" />
+            <End Role="blog" EntitySet="blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__comments__blogid__3F466844" Association="Self.FK__comments__blogid__3F466844">
+            <End Role="blog" EntitySet="blog" />
+            <End Role="comments" EntitySet="comments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="medicalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="medicalEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="registers" EntityType="medicalModel.register" />
+          <EntitySet Name="blogs" EntityType="medicalModel.blog" />
+          <EntitySet Name="categories" EntityType="medicalModel.category" />
+          <AssociationSet Name="FK__blog__cat_id__2B3F6F97" Association="medicalModel.FK__blog__cat_id__2B3F6F97">
+            <End Role="category" EntitySet="categories" />
+            <End Role="blog" EntitySet="blogs" />
+          </AssociationSet>
+          <EntitySet Name="appointments" EntityType="medicalModel.appointment" />
+          <EntitySet Name="comments" EntityType="medicalModel.comment" />
+          <AssociationSet Name="FK__comments__blogid__36B12243" Association="medicalModel.FK__comments__blogid__36B12243">
+            <End Role="blog" EntitySet="blogs" />
+            <End Role="comment" EntitySet="comments" />
+          </AssociationSet>
+          <EntitySet Name="contactus" EntityType="medicalModel.contactu" />
+        </EntityContainer>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="Int64" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_img" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="blog">
+          <Key>
+            <PropertyRef Name="blogid" />
+          </Key>
+          <Property Name="blogid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="blogtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="blogdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="blogdate" Type="DateTime" Precision="0" />
+          <Property Name="blogauthor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cat_id" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="medicalModel.FK__blog__cat_id__2B3F6F97" FromRole="blog" ToRole="category" />
+          <Property Name="blogimg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="comments" Relationship="medicalModel.FK__comments__blogid__36B12243" FromRole="blog" ToRole="comment" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="blogs" Relationship="medicalModel.FK__blog__cat_id__2B3F6F97" FromRole="category" ToRole="blog" />
+        </EntityType>
+        <Association Name="FK__blog__cat_id__2B3F6F97">
+          <End Type="medicalModel.category" Role="category" Multiplicity="0..1" />
+          <End Type="medicalModel.blog" Role="blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="blog">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="appointment">
+          <Key>
+            <PropertyRef Name="appid" />
+          </Key>
+          <Property Name="appid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="Int64" />
+          <Property Name="appdate" Type="DateTime" Precision="0" />
+          <Property Name="dept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="doctor" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="comment">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestname" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cdate" Type="DateTime" Precision="0" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="blogid" Type="Int32" />
+          <NavigationProperty Name="blog" Relationship="medicalModel.FK__comments__blogid__36B12243" FromRole="comment" ToRole="blog" />
+        </EntityType>
+        <Association Name="FK__comments__blogid__36B12243">
+          <End Type="medicalModel.blog" Role="blog" Multiplicity="0..1" />
+          <End Type="medicalModel.comment" Role="comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="blog">
+              <PropertyRef Name="blogid" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="blogid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="contactu">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestname" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="medicalModelStoreContainer" CdmEntityContainer="medicalEntities" >
+          <EntitySetMapping Name="registers">
+            <EntityTypeMapping TypeName="medicalModel.register">
+              <MappingFragment StoreEntitySet="register">
+                <ScalarProperty Name="user_img" ColumnName="user_img" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="blogs">
+            <EntityTypeMapping TypeName="medicalModel.blog">
+              <MappingFragment StoreEntitySet="blog">
+                <ScalarProperty Name="blogimg" ColumnName="blogimg" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="blogauthor" ColumnName="blogauthor" />
+                <ScalarProperty Name="blogdate" ColumnName="blogdate" />
+                <ScalarProperty Name="blogdescription" ColumnName="blogdescription" />
+                <ScalarProperty Name="blogtitle" ColumnName="blogtitle" />
+                <ScalarProperty Name="blogid" ColumnName="blogid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="medicalModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="appointments">
+            <EntityTypeMapping TypeName="medicalModel.appointment">
+              <MappingFragment StoreEntitySet="appointment">
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="doctor" ColumnName="doctor" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="appdate" ColumnName="appdate" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pname" ColumnName="pname" />
+                <ScalarProperty Name="appid" ColumnName="appid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comments">
+            <EntityTypeMapping TypeName="medicalModel.comment">
+              <MappingFragment StoreEntitySet="comments">
+                <ScalarProperty Name="blogid" ColumnName="blogid" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="cdate" ColumnName="cdate" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="guestname" ColumnName="guestname" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contactus">
+            <EntityTypeMapping TypeName="medicalModel.contactu">
+              <MappingFragment StoreEntitySet="contactus">
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="guestname" ColumnName="guestname" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="service-overview section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="content-block">
+                    <h2>Surgery And <br>Allied Services</h2>
+                    <p>
+                        The Physical Rehabilitation Center with the support of International Committee of Red Cross and CHAL Foundation was established in 2015.
+
+                        Indus Hospital & Health Network is the only hospital in providing free-of-cost prosthetic limbs along with physiotherapy to help patients walk again. Additionally, the facility also provides psychological therapy to patients and their families to help them cope with the circumstances.
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-caret-right"></i>Anesthesia, Pain Management & Critical Care</li>
+                        <li><i class="fas fa-caret-right"></i>General Surgery</li>
+                        <li><i class="fas fa-caret-right"></i>Obstetrics & Gynecology</li>
+                        <li><i class="fas fa-caret-right"></i>Orthopedics</li>
+                    </ul>
+                    <a href="@Url.Action("appointment","main")" class="btn btn-style-one">Appoint</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="accordion-section">
+                    <div class="accordion-holder">
+                        <div class="accordion" id="accordionGroup" role="tablist" aria-multiselectable="true">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h4 class="card-title">
+                                        <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Why Should I choose Medical Health
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionGroup">
+                                    <div class="card-body">
+                                        If you're passionate about your health and making a difference in lives, Taking care of one's health care can be one of the most rewarding choices
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingTwo">
+                                    <h4 class="card-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseTwo"
+                                           aria-expanded="false" aria-controls="collapseTwo">
+                                            What are the Centre’s visiting hours?
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionGroup">
+                                    <div class="card-body">
+                                        Center is open 24/7
+                                        <ul class="w-hours">
+                                            <li>Mon - Fri - <span>8:00 - 17:00</span></li>
+                                            <li>Mon - Fri - <span>8:00 - 17:00</span></li>
+                                            <li>Mon - Fri - <span>8:00 - 17:00</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingThree">
+                                    <h4 class="card-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree"
+                                           aria-expanded="false" aria-controls="collapseThree">
+                                            How many visitors are allowed?
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordionGroup">
+                                    <div class="card-body">
+                                        Not more than five people can come at a time. We have excellent staff to take care of the rest.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section pt-0">
+    <div class="container service-box">
+        <div class="row">
+            <div class="col-lg-6">
+                <img loading="lazy" class="img-fluid" src="~/images/services/service-one.jpg" alt="service-image">
+            </div>
+            <div class="col-lg-6">
+                <div class="contents">
+                    <div class="section-title">
+                        <h3>Pediatric Services</h3>
+                    </div>
+
+                    <div class="text">
+                        Routine health visits including Well Baby and physical exams; school and sports physicals.
+                    </div>
+                    <ul class="content-list">
+                        <li>
+                            <i class="far fa-check-circle"></i>Neonatal Medicine
+                        </li>
+                        <li>
+                            <i class="far fa-check-circle"></i>Pediatric Critical Care
+                        </li>
+                        <li>
+                            <i class="far fa-check-circle"></i> Pediatric General Surgery
+                        </li>
+                        <li>
+                            <i class="far fa-check-circle"></i> Pediatric Medicine
+                        </li>
+                        <li>
+                            <i class="far fa-check-circle"></i> Pediatric Oncology
+                        </li>
+
+                    </ul>
+                    <a href="@Url.Action("appointment","main")" class="btn btn-style-one">Appoint</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

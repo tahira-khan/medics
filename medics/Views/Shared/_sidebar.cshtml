@@ -1,0 +1,39 @@
+﻿<div class="col-lg-3">
+    <div class="right-side">
+        <div class="text-title">
+            <h6>Search</h6>
+        </div>
+        <div class="search-box">
+            @using (Html.BeginForm("blog","main",FormMethod.Post))
+            {
+                <div class="input-group">
+                    <input class="form-control" type="search" name="search" placeholder="Enter to Search" required="" autocomplete="off">
+                </div>
+            }
+        </div>
+        <div class="categorise-menu">
+            <div class="text-title">
+                <h6>Categories</h6>
+            </div>
+            <ul class="categorise-list">
+                <li><a href="@Url.Action("alumni","main")">Alumni <span>  </span></a></li>
+                <li><a href="@Url.Action("psychology","main")">Psycology <span></span></a></li>
+                <li><a href="@Url.Action("sonogram","main")">Sonogram <span></span></a></li>
+                <li><a href="@Url.Action("xray","main")">x-ray <span></span></a></li>
+                <li><a href="@Url.Action("dental","main")">Dental <span></span></a></li>
+            </ul>
+        </div>
+        <div class="tag-list">
+            <div class="text-title">
+                <h6>Tags</h6>
+            </div>
+            <a href="">Dental</a>
+            <a href="">Root</a>
+            <a href="">Clean</a>
+            <a href="">Rehabilitation</a>
+            <a href="">Surgery</a>
+            <a href="">Doctor</a>
+            
+        </div>
+    </div>
+</div>

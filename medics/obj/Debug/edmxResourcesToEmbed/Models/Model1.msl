@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="medicalModelStoreContainer" CdmEntityContainer="medicalEntities">
+    <EntitySetMapping Name="registers">
+      <EntityTypeMapping TypeName="medicalModel.register">
+        <MappingFragment StoreEntitySet="register">
+          <ScalarProperty Name="user_img" ColumnName="user_img" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="blogs">
+      <EntityTypeMapping TypeName="medicalModel.blog">
+        <MappingFragment StoreEntitySet="blog">
+          <ScalarProperty Name="blogimg" ColumnName="blogimg" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="blogauthor" ColumnName="blogauthor" />
+          <ScalarProperty Name="blogdate" ColumnName="blogdate" />
+          <ScalarProperty Name="blogdescription" ColumnName="blogdescription" />
+          <ScalarProperty Name="blogtitle" ColumnName="blogtitle" />
+          <ScalarProperty Name="blogid" ColumnName="blogid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="medicalModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appointments">
+      <EntityTypeMapping TypeName="medicalModel.appointment">
+        <MappingFragment StoreEntitySet="appointment">
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="doctor" ColumnName="doctor" />
+          <ScalarProperty Name="dept" ColumnName="dept" />
+          <ScalarProperty Name="appdate" ColumnName="appdate" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="appid" ColumnName="appid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comments">
+      <EntityTypeMapping TypeName="medicalModel.comment">
+        <MappingFragment StoreEntitySet="comments">
+          <ScalarProperty Name="blogid" ColumnName="blogid" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="cdate" ColumnName="cdate" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="guestname" ColumnName="guestname" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contactus">
+      <EntityTypeMapping TypeName="medicalModel.contactu">
+        <MappingFragment StoreEntitySet="contactus">
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="guestname" ColumnName="guestname" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

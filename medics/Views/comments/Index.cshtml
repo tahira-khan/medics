@@ -1,0 +1,58 @@
+﻿@model IEnumerable<medics.Models.comment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.guestname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.blog.blogtitle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.guestname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.blog.blogtitle)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cid })
+        </td>
+    </tr>
+}
+
+</table>

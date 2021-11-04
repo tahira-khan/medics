@@ -1,0 +1,59 @@
+﻿@model medics.Models.comment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.guestname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.guestname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blog.blogtitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blog.blogtitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
